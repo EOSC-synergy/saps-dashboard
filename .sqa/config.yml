@@ -1,7 +1,7 @@
 # .sqa/config.yml - jenkins-pipeline-library configuration file
 config:
   project_repos:
-    saps-archiver:
+    saps-dashboard:
       repo: 'https://github.com/EOSC-synergy/saps-dashboard/'
       branch: master
 
