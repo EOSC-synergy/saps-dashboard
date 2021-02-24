@@ -11,5 +11,6 @@ sqa_criteria:
        saps-dashboard:
          container: dashboard-docs
          commands:
+           - which -a pip
            - /usr/bin/pip install recommonmark
            - make html -C /saps-dashboard-repo/docs/
