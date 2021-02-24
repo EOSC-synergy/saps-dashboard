@@ -1,7 +1,12 @@
 version: "3.6"
 
 services:
-  processing:
-    image: "ufcgsaps/dashboard:latest"
-    container_name: "processing"
-    hostname: "processing"
+  dashboard-docs:
+    image: "sphinxdoc/sphinx"
+    container_name: dashboard-docs
+    hostname: dashboard-docs
+    volumes:
+     - type: bind
+       source: ./saps-dashboard
+       target: /saps-dashboard-repo
+    command: sleep 3600
