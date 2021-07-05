@@ -1,15 +1,25 @@
 # .sqa/config.yml - jenkins-pipeline-library configuration file
 config:
-  project_repos:
-    saps-dashboard:
-      repo: 'https://github.com/EOSC-synergy/saps-dashboard/'
-      branch: master
-
+  credentials:
+  - id: synergy_dockerhub_bot_pass
+    password_var: JPL_DOCKERPASS
+    username_var: JPL_DOCKERUSER
+  project_repos: {}
+environment:
+  JPL_DOCKERPUSH: saps-dashboard
 sqa_criteria:
-   qc_doc:
-     repos:
-       saps-dashboard:
-         container: dashboard-docs
-         commands:
-           - pip install recommonmark
-           - make html -C /saps-dashboard-repo/docs/
+  qc_doc:
+    repos:
+      this_repo:
+        commands:
+        - pip install recommonmark
+        - make html -C docs/
+        container: saps-dashboard-docs
+  qc_style:
+    repos:
+      this_repo:
+        commands:
+        - 'hadolint --ignore DL3008 --ignore DL3009 --ignore DL3016 --ignore DL3015
+          docker/Dockerfile '
+        container: saps-hadolint
+timeout: 600
