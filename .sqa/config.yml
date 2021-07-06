@@ -1,25 +1,12 @@
-# .sqa/config.yml - jenkins-pipeline-library configuration file
 config:
-  credentials:
-  - id: synergy_dockerhub_bot_pass
-    password_var: JPL_DOCKERPASS
-    username_var: JPL_DOCKERUSER
+  credentials: []
   project_repos: {}
-environment:
-  JPL_DOCKERPUSH: saps-dashboard
+environment: {}
 sqa_criteria:
-  qc_doc:
-    repos:
-      this_repo:
-        commands:
-        - pip install recommonmark
-        - make html -C docs/
-        container: saps-dashboard-docs
   qc_style:
     repos:
       this_repo:
         commands:
-        - 'hadolint --ignore DL3008 --ignore DL3009 --ignore DL3016 --ignore DL3015
-          docker/Dockerfile '
-        container: saps-hadolint
+        - hadolint docker/Dockerfile
+        container: hadolint
 timeout: 600
