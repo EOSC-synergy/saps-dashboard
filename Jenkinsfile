@@ -6,13 +6,7 @@ pipeline {
     agent any
 
     stages {
-        stage('SQA baseline criterion: QC.Doc & QC.Sty') {
-            when {
-                anyOf {
-                    branch 'master'
-                    branch 'sqa'
-                }
-            }
+        stage('SQA baseline criterion: QC.Sty') {
             steps {
                 script {
                     projectConfig = pipelineConfig(
